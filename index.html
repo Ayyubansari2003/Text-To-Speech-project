@@ -3,32 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text To Speech</title>
+    <title>TTS App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <h1>Text To Speech</h1>
-        <textarea id="textTospeak"></textarea>
-        <button onclick="speak()">Text to speak</button>
+    <div class="background">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
     </div>
 
-    
+    <div id="container">
+        <h1>🎤 Text To Speech</h1>
+        <div class="card">
+            <textarea id="textTospeak" placeholder="Type something..."></textarea>
+            
+            <div class="controls">
+                <label>Pitch: <span id="pitchValue">1</span></label>
+                <input type="range" min="0" max="2" step="0.1" value="1" id="pitch">
+                
+                <label>Rate: <span id="rateValue">1</span></label>
+                <input type="range" min="0.5" max="2" step="0.1" value="1" id="rate">
+                
+                <label>Volume: <span id="volumeValue">1</span></label>
+                <input type="range" min="0" max="1" step="0.1" value="1" id="volume">
+                
+                <label>Voice</label>
+                <select id="voiceSelect"></select>
+            </div>
+
+            <button onclick="speak()" id="speakBtn">🔊 Speak</button>
+        </div>
+    </div>
+
+<script src="script.js"></script>
 </body>
-<script>
- var speech = new SpeechSynthesisUtterance();
-
-function speak() {
-    speech.text = textTospeak.value;
-
-    // Setting values within valid ranges
-    speech.rate = 1;    // Adjust as needed
-    speech.volume = 5;  // Adjust as needed
-    speech.pitch = 1;   // Adjust as needed
-
-    // Corrected speechSynthesis instance
-    window.speechSynthesis.speak(speech);
-}
-
-</script>
 </html>
